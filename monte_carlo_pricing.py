@@ -1,5 +1,4 @@
 # monte_carlo_pricing.py
-# Project 2: Option Pricing with Monte Carlo Simulation
 # Author: Konstantinos Manesiotis
 
 import numpy as np
