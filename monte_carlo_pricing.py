@@ -52,7 +52,31 @@ os.makedirs("plots", exist_ok=True)
 plt.savefig("plots/stock_paths.png")
 plt.show()
 
+# ----- Υπολογισμός Τιμής Option με Monte Carlo -----
 
+S_T = S[:, -1]  # τιμές μετοχής στο τέλος κάθε path
+
+# Call option payoff
+call_payoff = np.maximum(S_T - K, 0)
+call_price = np.exp(-r * T) * np.mean(call_payoff)
+
+# Put option payoff
+put_payoff = np.maximum(K - S_T, 0)
+put_price = np.exp(-r * T) * np.mean(put_payoff)
+
+print(f"Monte Carlo Estimated Call Price: {call_price:.4f}")
+print(f"Monte Carlo Estimated Put Price:  {put_price:.4f}")
+
+# ----- Υπολογισμός Black-Scholes Τιμών -----
+
+d1 = (np.log(S0 / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+d2 = d1 - sigma * np.sqrt(T)
+
+bs_call = S0 * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+bs_put = K * np.exp(-r * T) * norm.cdf(-d2) - S0 * norm.cdf(-d1)
+
+print(f"Black-Scholes Call Price: {bs_call:.4f}")
+print(f"Black-Scholes Put Price:  {bs_put:.4f}")
 
 
 
