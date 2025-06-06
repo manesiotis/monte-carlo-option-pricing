@@ -25,11 +25,12 @@ Monte Carlo methods are useful for pricing options when closed-form solutions (l
 pip install -r requirements.txt
 python monte_carlo_pricing.py
 
-## Output
+**## Output**
 
 - Estimated Call/Put prices printed in the console.
 - Plot of 100 simulated stock paths saved in `plots/stock_paths.png`.
 
-Example:
+**Example:**
 Monte Carlo Estimated Call Price: 8.0214  
 Black-Scholes Call Price:         8.0286
+
